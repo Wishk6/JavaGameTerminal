@@ -9,7 +9,7 @@ public class Character
     private int potionRemaining;
     private Weapon weapon;
 
-    public Character(String _name)
+    public Character(String _name, WeaponType _type)
     {
         name = _name;
         hp = 100;
@@ -18,22 +18,30 @@ public class Character
         potionRemaining = 5;
     }
 
-    public void Attack(Character target)
+    public void Attack(Character _target)
     {
-
+        weapon.Attack(_target);
     }
-    public void Heal(int hp)
+    public void Heal(int _amount)
     {
-
+        hp = hp + _amount;
     }
-    public void defend(int _amount, boolean _ignoreDef)
+
+    public void Defend(int _amount, boolean _ignoreDef)
     {
         switch(weapon.type)
         {
-            case Staff, Bow, LongSword:
+            case Staff, LongSword:
                 if(_ignoreDef)
                 {
                     hp = hp - _amount;
+                }
+                hp = hp - Math.abs(_amount - def);
+                break;
+            case Bow:
+                if(Math.random() > 0.5)
+                {
+                    break;
                 }
                 hp = hp - Math.abs(_amount - def);
                 break;

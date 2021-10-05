@@ -1,27 +1,57 @@
 package Game;
 
-enum WeaponType
-{
-    LongSword,
-    Bow,
-    ShieldSword,
-    Staff,
-}
-
 public class Weapon
 {
     WeaponType type;
     int damage;
 
-    public int Attack()
+    public Weapon(WeaponType _type)
+    {
+        switch(_type)
+        {
+            case Staff, Bow:
+                damage = 20;
+                break;
+            case LongSword:
+                damage = 30;
+                break;
+            case ShieldSword:
+                damage = 15;
+                break;
+        }
+    }
+
+    public void Attack(Character _target)
     {
         if(type == WeaponType.Bow)
         {
-            if(Math.random() > 0.5)
+            if(Math.random() > 0.75)
             {
-                return damage * 2;
+                _target.Defend(damage, true);
+                return;
             }
         }
-        return damage;
+        if(type == WeaponType.Staff)
+        {
+            if(Math.random() > 0.5)
+            {
+                _target.Defend(damage * 2, false);
+                return;
+            }
+        }
+        if(type == WeaponType.LongSword)
+        {
+            if(Math.random() > 0.5)
+            {
+                _target.Defend(damage * 2, false);
+                return;
+            }
+        }
+        _target.Defend(damage, false);
+    }
+
+    public WeaponType getType()
+    {
+        return type;
     }
 }
