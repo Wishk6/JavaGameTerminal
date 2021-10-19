@@ -1,12 +1,14 @@
-package Game;
+package Game.Items.Equipments;
+
+import Game.Units.Character;
+import Game.Enums.WeaponClass;
 
 public class Weapon
 {
-    WeaponType type;
-    int damage;
+    private WeaponClass type;
+    private int damage;
 
-    public Weapon(WeaponType _type)
-    {
+    public Weapon(WeaponClass _type){
         switch(_type)
         {
             case Staff, Bow:
@@ -21,9 +23,8 @@ public class Weapon
         }
     }
 
-    public void Attack(Character _target)
-    {
-        if(type == WeaponType.Bow)
+    public void Attack(Character _target){
+        if(type == WeaponClass.Bow)
         {
             if(Math.random() > 0.75)
             {
@@ -31,7 +32,7 @@ public class Weapon
                 return;
             }
         }
-        if(type == WeaponType.Staff)
+        if(type == WeaponClass.Staff)
         {
             if(Math.random() > 0.5)
             {
@@ -39,7 +40,7 @@ public class Weapon
                 return;
             }
         }
-        if(type == WeaponType.LongSword)
+        if(type == WeaponClass.LongSword)
         {
             if(Math.random() > 0.5)
             {
@@ -50,7 +51,7 @@ public class Weapon
         _target.Defend(damage, false);
     }
 
-    public WeaponType getType()
+    public WeaponClass getType()
     {
         return type;
     }

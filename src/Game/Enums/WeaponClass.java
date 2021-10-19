@@ -1,6 +1,6 @@
-package Game;
+package Game.Enums;
 
-public enum WeaponType
+public enum WeaponClass
 {
     LongSword,
     Bow,

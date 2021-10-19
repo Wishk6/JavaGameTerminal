@@ -1,14 +1,14 @@
-import Game.Character;
-import Game.WeaponType;
+import Game.Units.Character;
+import Game.Enums.WeaponClass;
 
 
 public class Main {
     public static void main(String[] args)
     {
-        Character Nanaka = new Character("Nanaka", WeaponType.ShieldSword);
-        Character Jaetan = new Character("Jaetan", WeaponType.Bow);
-        Character XFactors = new Character("XFactors", WeaponType.Staff);
-        Character Wishk = new Character("Wishk", WeaponType.LongSword);
+        Character Nanaka = new Character("Nanaka", WeaponClass.ShieldSword);
+        Character Jaetan = new Character("Jaetan", WeaponClass.Bow);
+        Character XFactors = new Character("XFactors", WeaponClass.Staff);
+        Character Wishk = new Character("Wishk", WeaponClass.LongSword);
 
 
         //Combat Jaetan Nanaka Dart vs LUA\\
@@ -21,3 +21,4 @@ public class Main {
         }
     }
 }
+
