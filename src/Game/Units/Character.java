@@ -8,11 +8,13 @@ public abstract class Character extends Entity {
     private int experiences;
     private int experienceToMax;
     protected WeaponClass weaponClass;
+    protected String weapon;
 
-    public Character(String _name, CharacterClass _characterClass, WeaponClass _weaponClass) {
+    public Character(String _name, CharacterClass _characterClass, WeaponClass _weaponClass, String _weapon) {
         super(_name, 1);
         weaponClass = _weaponClass;
         characterClass = _characterClass;
+        weapon = _weapon;
         experiences = 0;
         calculMaxExperience();
     }

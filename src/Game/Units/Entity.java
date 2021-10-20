@@ -1,7 +1,10 @@
 package Game.Units;
 
 import Game.Effects.Effect;
+import Game.Items.Equipments.Armor;
+import Game.Items.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Entity {
@@ -14,12 +17,18 @@ public abstract class Entity {
     protected double magicArmor;
     protected double weight;
     protected double speed;
-    protected List<Effect> Effects;
+    protected List<Effect> effects;
+    protected List<Item> potions;
+    protected List<Armor> equipments;
 
 
     public Entity(String _name, int _level){
         name = _name;
         level = _level;
+        effects = new ArrayList<>();
+        potions = new ArrayList<>();
+        equipments = new ArrayList<>();
+
     }
 
     public void attack(){
@@ -33,7 +42,7 @@ public abstract class Entity {
     }
 
     public List<Effect> getEffects(){
-        return Effects;
+        return effects;
     }
 
     public boolean isDead(){

@@ -5,8 +5,7 @@ import Game.Enums.WeaponClass;
 import Game.Units.Character;
 
 public class Barbarian extends Character {
-
-    public Barbarian(String _name, CharacterClass _characterClass, WeaponClass _weaponClass) {
-        super(_name, _characterClass, _weaponClass);
+    public Barbarian(String _name, WeaponClass _weaponClass, String _weapon) {
+        super(_name, CharacterClass.Barbarian, _weaponClass, _weapon);
     }
 }

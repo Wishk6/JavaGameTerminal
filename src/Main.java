@@ -30,7 +30,6 @@ public class Main {
         Game.init(name, gameDuration, difficulty);
 
         Debug.activate();
-        Debug.println("Name: " + name + "\n" + "Difficulty: " + difficulty + "\n" + "duration: " + gameDuration);
     }
 }
 
