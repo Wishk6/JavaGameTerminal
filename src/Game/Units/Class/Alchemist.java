@@ -1,13 +1,12 @@
 package Game.Units.Class;
 
-import Game.Enums.CharacterClass;
 import Game.Enums.Weapon;
-import Game.Enums.WeaponClass;
 import Game.Units.Character;
 
-public class Barbarian extends Character {
-    public Barbarian(String _name) {
+public class Alchemist extends Character {
+    public Alchemist(String _name) {
         super(_name);
+        weaponClass.addAll(Weapon.magicalWeapon);
         weaponClass.addAll(Weapon.oneHandedWeapon);
     }
 }

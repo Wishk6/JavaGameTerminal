@@ -3,18 +3,17 @@ package Game.Units;
 import Game.Enums.CharacterClass;
 import Game.Enums.WeaponClass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Character extends Entity {
-    private CharacterClass characterClass;
     private int experiences;
     private int experienceToMax;
-    protected WeaponClass weaponClass;
-    protected String weapon;
+    protected List<String> weaponClass;
 
-    public Character(String _name, CharacterClass _characterClass, WeaponClass _weaponClass, String _weapon) {
+    public Character(String _name) {
         super(_name, 1);
-        weaponClass = _weaponClass;
-        characterClass = _characterClass;
-        weapon = _weapon;
+        weaponClass = new ArrayList<>();
         experiences = 0;
         calculMaxExperience();
     }
@@ -23,17 +22,12 @@ public abstract class Character extends Entity {
         return experiences;
     }
 
-    protected void addExperience(int _addToExperience){
-        if(experiences + _addToExperience >= experienceToMax){
-            experiences = 0;
-            calculMaxExperience();
-            level++;
-            return;
-        }
-        experiences += _addToExperience;
-    }
-
     private void calculMaxExperience(){
         experienceToMax = (int) (2.5 * (level * level * level) - 5 * (level * level) + 200 * level - 140);
+    }
+
+    //setters
+    public List<String> getWeaponClass(){
+        return weaponClass;
     }
 }

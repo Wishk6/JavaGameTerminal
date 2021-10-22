@@ -9,7 +9,9 @@ import java.util.List;
 
 public abstract class Entity {
     protected String name;
+    protected String weapon;
     protected int level;
+    protected boolean confus;
     protected double health;
     protected double mana;
     protected double strengh;
@@ -47,5 +49,12 @@ public abstract class Entity {
 
     public boolean isDead(){
         return health <= 0;
+    }
+
+
+
+    //Setter
+    public void setWeapon(String _weapon){
+        weapon = _weapon;
     }
 }

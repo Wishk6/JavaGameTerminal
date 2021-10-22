@@ -4,8 +4,8 @@ import Game.Enums.EffectType;
 
 public class Effect {
     private EffectType type;
-    private boolean isInstant;
     private int turnCount;
+    private boolean isInstant;
 
     public Effect(){
     }
