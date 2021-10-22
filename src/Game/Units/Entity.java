@@ -2,6 +2,7 @@ package Game.Units;
 
 import Game.Effects.Effect;
 import Game.Items.Equipments.Armor;
+import Game.Items.Equipments.Weapon;
 import Game.Items.Item;
 
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ import java.util.List;
 
 public abstract class Entity {
     protected String name;
-    protected String weapon;
     protected int level;
     protected boolean confus;
     protected double health;
@@ -19,6 +19,7 @@ public abstract class Entity {
     protected double magicArmor;
     protected double weight;
     protected double speed;
+    protected Weapon weapon;
     protected List<Effect> effects;
     protected List<Item> potions;
     protected List<Armor> equipments;
@@ -54,7 +55,7 @@ public abstract class Entity {
 
 
     //Setter
-    public void setWeapon(String _weapon){
+    public void setWeapon(Weapon _weapon){
         weapon = _weapon;
     }
 }

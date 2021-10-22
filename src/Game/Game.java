@@ -1,6 +1,7 @@
 package Game;
 
 import Game.Enums.*;
+import Game.Items.Equipments.Weapon;
 import Game.Misc.Asker;
 import Game.Units.Character;
 import Game.Units.Class.*;
@@ -32,19 +33,18 @@ public class Game {
         int teamSize = Asker.askChoice(Arrays.asList("1", "2", "3", "4"), "Select team size");
 
         for(int i = 0; i < teamSize; i++){
-            createCharacter(i + 1);
+            createCharacter(i);
         }
     }
 
     static private void createCharacter(int idPlayer){
         List<String> _characters = new ArrayList<>();
-        Asker.println("Player " + idPlayer + " select your class");
 
         for(CharacterClass player : CharacterClass.values()){
             _characters.add(player.name());
         }
 
-        int localCharacter = Asker.askChoice(_characters, "Player " + idPlayer + " select your class");
+        int localCharacter = Asker.askChoice(_characters, "Player " + idPlayer + 1 + " select your class");
         String playerName = Asker.askEntry("Enter your name");
 
         switch (localCharacter){
@@ -62,6 +62,6 @@ public class Game {
         }
 
         int localWeapon = Asker.askChoice(characters.get(idPlayer).getWeaponClass(), "Select yout weapon");
-        characters.get(idPlayer).setWeapon(characters.get(idPlayer).getWeaponClass().get(localWeapon));
+        characters.get(idPlayer).setWeapon(new Weapon(characters.get(idPlayer).getWeaponClass().get(localWeapon)));
     }
 }
