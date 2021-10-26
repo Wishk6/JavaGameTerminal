@@ -39,11 +39,12 @@ public class Game {
         Asker.clear();
         Asker.println("name of game: " + name);
         Asker.println("difficulty of game: " + difficulty);
-        Asker.println("game duration: " + _gameDuration);
+        Asker.println("game duration: " + _gameDuration + " rounds");
 
         for(Character character : characters){
             Asker.println("player name: " + character.getName());
-            Asker.println("player weapon: " + character.getWeaponById(0));
+            Asker.println("player start weapon: " + character.getWeaponById(0).getName());
+            Asker.println("");
         }
     }
 

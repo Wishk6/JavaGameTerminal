@@ -19,23 +19,19 @@ public abstract class Entity {
     protected double magicArmor;
     protected double weight;
     protected double speed;
-    protected List<Weapon> weapon;
-    protected List<Effect> effects;
-    protected List<Item> potions;
-    protected List<Armor> equipments;
+    protected List<Weapon> weapons = new ArrayList<>();
+    protected List<Effect> effects = new ArrayList<>();
+    protected List<Item> potions = new ArrayList<>();
+    protected List<Armor> equipments = new ArrayList<>();
 
 
     public Entity(String _name, int _level){
         name = _name;
         level = _level;
-        effects = new ArrayList<>();
-        potions = new ArrayList<>();
-        equipments = new ArrayList<>();
-
     }
 
-    public void attack(){
-
+    public void attack(Entity entity){
+        entity.defend();
     }
     public void heal(){
 
@@ -45,19 +41,19 @@ public abstract class Entity {
     }
 
     //Getters
+    public String getName(){ return name; }
+    public Weapon getWeaponById(int id){ return weapons.get(id); }
+    public List<Weapon> getWeapons(){ return weapons; }
     public List<Effect> getEffects(){
         return effects;
     }
-    public String getName(){ return name; }
-    public String getWeaponById(int id){ return weapon.get(id).getWeapon(); }
     public boolean isDead(){
         return health <= 0;
     }
 
 
-
     //Setter
     public void setWeapon(Weapon _weapon){
-        weapon.add(_weapon);
+        weapons.add(_weapon);
     }
 }

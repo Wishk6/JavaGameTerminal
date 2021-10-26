@@ -17,7 +17,7 @@ public class Weapon {
         weapon = _weapon;
     }
 
-    public String getWeapon(){
+    public String getName(){
         return weapon;
     }
 
