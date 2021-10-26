@@ -73,6 +73,6 @@ public class Game {
         }
 
         int localWeapon = Asker.askChoice(characters.get(idPlayer).getWeaponClass(), "Select yout weapon");
-        characters.get(idPlayer).setWeapon(new Weapon(characters.get(idPlayer).getWeaponClass().get(localWeapon-1)));
+        characters.get(idPlayer).addWeapon(new Weapon(characters.get(idPlayer).getWeaponClass().get(localWeapon-1)));
     }
 }

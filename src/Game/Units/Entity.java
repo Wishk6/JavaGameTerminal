@@ -53,7 +53,7 @@ public abstract class Entity {
 
 
     //Setter
-    public void setWeapon(Weapon _weapon){
+    public void addWeapon(Weapon _weapon){
         weapons.add(_weapon);
     }
 }
