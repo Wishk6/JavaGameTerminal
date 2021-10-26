@@ -19,7 +19,7 @@ public abstract class Entity {
     protected double magicArmor;
     protected double weight;
     protected double speed;
-    protected Weapon weapon;
+    protected List<Weapon> weapon;
     protected List<Effect> effects;
     protected List<Item> potions;
     protected List<Armor> equipments;
@@ -44,10 +44,12 @@ public abstract class Entity {
 
     }
 
+    //Getters
     public List<Effect> getEffects(){
         return effects;
     }
-
+    public String getName(){ return name; }
+    public String getWeaponById(int id){ return weapon.get(id).getWeapon(); }
     public boolean isDead(){
         return health <= 0;
     }
@@ -56,6 +58,6 @@ public abstract class Entity {
 
     //Setter
     public void setWeapon(Weapon _weapon){
-        weapon = _weapon;
+        weapon.add(_weapon);
     }
 }

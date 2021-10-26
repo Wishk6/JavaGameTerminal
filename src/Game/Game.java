@@ -35,6 +35,16 @@ public class Game {
         for(int i = 0; i < teamSize; i++){
             createCharacter(i);
         }
+
+        Asker.clear();
+        Asker.println("name of game: " + name);
+        Asker.println("difficulty of game: " + difficulty);
+        Asker.println("game duration: " + _gameDuration);
+
+        for(Character character : characters){
+            Asker.println("player name: " + character.getName());
+            Asker.println("player weapon: " + character.getWeaponById(0));
+        }
     }
 
     static private void createCharacter(int idPlayer){
@@ -44,7 +54,7 @@ public class Game {
             _characters.add(player.name());
         }
 
-        int localCharacter = Asker.askChoice(_characters, "Player " + idPlayer + 1 + " select your class");
+        int localCharacter = Asker.askChoice(_characters, "Player " + (idPlayer + 1) + " select your class");
         String playerName = Asker.askEntry("Enter your name");
 
         switch (localCharacter){
@@ -62,6 +72,6 @@ public class Game {
         }
 
         int localWeapon = Asker.askChoice(characters.get(idPlayer).getWeaponClass(), "Select yout weapon");
-        characters.get(idPlayer).setWeapon(new Weapon(characters.get(idPlayer).getWeaponClass().get(localWeapon)));
+        characters.get(idPlayer).setWeapon(new Weapon(characters.get(idPlayer).getWeaponClass().get(localWeapon-1)));
     }
 }
