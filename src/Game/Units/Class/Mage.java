@@ -1,14 +1,11 @@
 package Game.Units.Class;
 
-import Game.Enums.CharacterClass;
-import Game.Enums.Weapon;
+import Game.Enums.WeaponList;
 import Game.Units.Character;
-import Game.Enums.WeaponClass;
 
 public class Mage extends Character {
     public Mage(String _name) {
-        super(_name);
-        weaponClass.addAll(Weapon.magicalWeapon);
-        weaponClass.addAll(Weapon.rangedWeapon);
+        super(_name, 300, 250);
+        weapons.addAll(WeaponList.magicalWeapon);
     }
 }

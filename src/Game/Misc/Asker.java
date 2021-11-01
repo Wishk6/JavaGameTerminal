@@ -79,28 +79,5 @@ public class Asker {
         println("");
         println("");
         println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
     }
 }
