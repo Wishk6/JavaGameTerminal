@@ -5,7 +5,7 @@ import Game.Units.Character;
 
 public class Trapper extends Character {
     public Trapper(String _name) {
-        super(_name, 300, 300);
+        super(_name, 125, 300);
         weapons.addAll(WeaponList.rangedWeapon);
     }
 }

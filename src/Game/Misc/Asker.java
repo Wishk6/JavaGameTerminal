@@ -66,18 +66,6 @@ public class Asker {
     public static void clear(){
         println("");
         println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
-        println("");
+        
     }
 }

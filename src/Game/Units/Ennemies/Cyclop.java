@@ -1,9 +1,11 @@
 package Game.Units.Ennemies;
 
-import Game.Units.Ennemy;
+import Game.Units.Enemy;
 
-public class Cyclop extends Ennemy {
-    public Cyclop() {
-        super("Cyclop", 1);
+public class Cyclop extends Enemy {
+
+    public Cyclop(int hp, int dmg) {
+        super("Cyclop",hp, dmg);
     }
 }
+

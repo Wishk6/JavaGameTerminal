@@ -1,4 +1,10 @@
 package Game.Units.Ennemies;
 
-public class Ent {
+import Game.Units.Enemy;
+
+public class Ent extends Enemy {
+
+    public Ent(int hp, int dmg) {
+        super("Ent",hp, dmg);
+    }
 }
