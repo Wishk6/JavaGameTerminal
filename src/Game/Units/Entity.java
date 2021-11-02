@@ -22,7 +22,7 @@ public abstract class Entity {
     public void attack(Entity entity){
         entity.defend(attackDamage);
     }
-    public void defend(double damage){
+    public void defend(int damage){
         hp -= damage;
     }
 

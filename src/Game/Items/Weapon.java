@@ -1,13 +1,13 @@
 package Game.Items;
 
 public class Weapon {
-    String weapon;
+    String name;
 
-    public Weapon(String _weapon){
-        weapon = _weapon;
+    public Weapon(String _name){
+        name = _name;
     }
 
     public String getName(){
-        return weapon;
+        return name;
     }
 }
