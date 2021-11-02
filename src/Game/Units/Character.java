@@ -1,35 +1,27 @@
 package Game.Units;
 
-import Game.Items.Weapon;
+import Game.Items.IWeapon;
+import Game.Items.WeaponBag;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Character extends Entity {
-    private int experiences;
-    private int experienceToMax;
-    protected List<Weapon> weapons = new ArrayList<>();
+    protected WeaponBag weapons = new WeaponBag();
 
     public Character(String _name, int _attackDamage, int _hp) {
         super(_name, 1, _hp, _attackDamage);
-        experiences = 0;
-        calculMaxExperience();
     }
 
     //Getter
     public List<String> getWeaponNames(){
         List<String> names = new ArrayList<>();
 
-        for(Weapon weapon : weapons){
+        for(IWeapon weapon : weapons){
             names.add(weapon.getName());
         }
         return names;
     }
-
-
-
-
-    private void calculMaxExperience(){
-        experienceToMax = (int) (2.5 * (level * level * level) - 5 * (level * level) + 200 * level - 140);
-    }
 }
+
+//2.5 * (level * level * level) - 5 * (level * level) + 200 * level - 140
