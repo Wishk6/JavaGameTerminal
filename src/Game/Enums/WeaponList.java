@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WeaponList {
-    static public List<Weapon> magicalWeapon = Arrays.asList(
+    static private List<Weapon> magicalWeapon = Arrays.asList(
             new Weapon("Tome"),
             new Weapon("Wand"),
             new Weapon("Staff"),
@@ -15,7 +15,7 @@ public class WeaponList {
             new Weapon("Glove"),
             new Weapon("GemStone")
     );
-    static public List<Weapon> oneHandedWeapon = Arrays.asList(
+    static private List<Weapon> oneHandedWeapon = Arrays.asList(
             new Weapon("Katana"),
             new Weapon("Sword"),
             new Weapon("ShieldSword"),
@@ -24,7 +24,7 @@ public class WeaponList {
             new Weapon("DoubleDagger"),
             new Weapon("Flail")
     );
-    static public List<Weapon> twoHandedWeapon = Arrays.asList(
+    static private List<Weapon> twoHandedWeapon = Arrays.asList(
             new Weapon("WarHammer"),
             new Weapon("BattleAxe"),
             new Weapon("LongSword"),
@@ -32,7 +32,7 @@ public class WeaponList {
             new Weapon("Nadachi"),
             new Weapon("Ohmlatl")
     );
-    static public List<Weapon> rangedWeapon = Arrays.asList(
+    static private List<Weapon> rangedWeapon = Arrays.asList(
             new Weapon("Bow"),
             new Weapon("CrossBow"),
             new Weapon("Kunai"),
@@ -41,4 +41,18 @@ public class WeaponList {
             new Weapon("DoubleGun"),
             new Weapon("ShortGun")
     );
+
+
+    public static List<Weapon> getMagicalWeapon(){
+        return magicalWeapon;
+    }
+    public static List<Weapon> getRangedWeapon(){
+        return rangedWeapon;
+    }
+    public static List<Weapon> getOneHandedWeapon(){
+        return oneHandedWeapon;
+    }
+    public static List<Weapon> getTwoHandedWeapon(){
+        return twoHandedWeapon;
+    }
 }

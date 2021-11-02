@@ -11,6 +11,7 @@ import java.util.List;
 public class Game {
     static private Character character;
     static private int score = 0;
+    static private Enemy enemy;
 
     static public void init(){
         createCharacter();
@@ -27,10 +28,9 @@ public class Game {
     }
 
     static private boolean fight(){
-        Enemy enemy = getRandomEnemy(); // create random enemy
+         enemy = getRandomEnemy(); // create random enemy
 
-
-            Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttackDamage() + " damages each turn");
+        Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttackDamage() + " damages each turn");
         printStats(enemy);
         while (enemy.isAlive() && character.isAlive()){
 
@@ -64,7 +64,7 @@ public class Game {
                 "Vampire"
         );
         String randomEnemy = _charactersClass.get((int) (Math.random() * _charactersClass.size())); // get random index
-        int randomDamage = (int) (Math.random() * 50); // 70 dmg max
+        int randomDamage = (int) (Math.random() * 60); // 60 dmg max
         int randomHp = (int) (Math.random() * 300); // random max 300 hp
         return new Enemy(randomEnemy,randomHp,randomDamage);
     }
