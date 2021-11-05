@@ -22,6 +22,9 @@ public abstract class Character extends Entity {
         }
         return names;
     }
+    public IWeapon getWeaponById(int id){
+        return weapons.get(id);
+    }
 }
 
 //2.5 * (level * level * level) - 5 * (level * level) + 200 * level - 140

@@ -9,15 +9,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Game {
-    static private Character character;
-    static private int score = 0;
-    static private Enemy enemy;
+    private static final Game game = new Game();
+    private Character character;
+    private int score = 0;
+    private Enemy enemy;
 
-    static public void init(){
+    private Game(){}
+
+    public static Game getInstance(){
+        return game;
+    }
+
+    public void init(){
         createCharacter();
     }
 
-    static public void start(){
+    public void start(){
         boolean win;
 
         do {
@@ -27,7 +34,7 @@ public class Game {
         }while (win);// while win is true
     }
 
-    static private boolean fight(){
+    private boolean fight(){
          enemy = getRandomEnemy(); // create random enemy
 
         Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttackDamage() + " damages each turn");
@@ -37,12 +44,12 @@ public class Game {
 
             Asker.println("");
 
-            Asker.askChoice(character.getWeaponNames(), "Select a weapon to attack this " + enemy.getName());
+            int weaponId = Asker.askChoice(character.getWeaponNames(), "Select a weapon to attack this " + enemy.getName());
             Asker.println("You are attacking " + enemy.getName());
             Asker.clear();
             Asker.println("enemy loses " + character.getAttackDamage() + "HP !");
             enemy.attack(character);
-            character.attack(enemy);
+            character.attack(enemy, character.getWeaponById(weaponId));
             printStats(enemy);
         }
         if (!enemy.isAlive() && character.isAlive()) {
@@ -53,7 +60,7 @@ public class Game {
         return character.isAlive();
     }
 
-    static private Enemy getRandomEnemy(){
+    private Enemy getRandomEnemy(){
         List<String> _charactersClass = Arrays.asList(
                 "Cyclop",
                 "Drawf",
@@ -69,7 +76,7 @@ public class Game {
         return new Enemy(randomEnemy,randomHp,randomDamage);
     }
 
-    static private void createCharacter(){
+    private void createCharacter(){
         List<String> _charactersClass = Arrays.asList(
                 "Barbarian",
                 "Knight",
@@ -88,18 +95,18 @@ public class Game {
         }
     }
 
-    static private void printStats(Enemy enemy){
+    private void printStats(Enemy enemy){
         Asker.println("Enemy have " + enemy.getHp() + " HP");
         Asker.println("You have " + character.getHp()+ " HP");
     }
 
-    static private void kill() {
+    private void kill() {
         Asker.clear();
         Asker.println(" Enemy killed ! ");
         score++;
     }
 
-    static private void end(){
+    private void end(){
         Asker.clear();
         Asker.println("Defeat...");
     }

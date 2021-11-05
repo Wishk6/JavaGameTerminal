@@ -1,5 +1,8 @@
 package Game.Units;
 
+import Game.Items.IWeapon;
+import Game.Items.Weapon;
+
 public abstract class Entity {
     protected String name;
     protected int level;
@@ -21,6 +24,9 @@ public abstract class Entity {
 
     public void attack(Entity entity){
         entity.defend(attackDamage);
+    }
+    public void attack(Entity entity, IWeapon weapon){
+        entity.defend(attackDamage + weapon.getDamage());
     }
     public void defend(int damage){
         hp -= damage;
