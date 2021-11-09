@@ -4,13 +4,13 @@ public class Weapon implements IWeapon {
     private final String name;
     private final int damage;
     private int usure = 0;
-    private double precision = 0.6;
+    private int precision;
 
     public Weapon(String _name){
         name = _name;
         damage = 10;
     }
-    public Weapon(String _name, int _damage, double _precision){
+    public Weapon(String _name, int _damage, int _precision){
         name = _name;
         damage = _damage;
         precision = _precision;
@@ -30,7 +30,12 @@ public class Weapon implements IWeapon {
         return  (int) (damage * precision);
     }
     @Override
-    public double getPrecision() {
+    public int getPrecision() {
         return precision;
+    }
+
+    @Override
+    public int getRange() {
+        return 0;
     }
 }

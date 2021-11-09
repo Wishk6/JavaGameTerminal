@@ -1,14 +1,13 @@
 package Game.Items;
 
-public interface IWeapon {
-    //Getters
+public interface IWeapon {    // le sac pèse 10 est une arme pèse 1
     String getName();
     int getUsure();
     int getDamage();
-    double getPrecision();
-
+    int getPrecision();
+    int getRange();
     //int getWeight();
     //void repair(float percent);
     //boolean isEquipped();
-    //int getSize();
+    // void attack(IPersonnage);
 }
