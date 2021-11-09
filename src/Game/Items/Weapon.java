@@ -3,7 +3,7 @@ package Game.Items;
 public class Weapon implements IWeapon {
     private final String name;
     private final int damage;
-    private int usure = 15;
+    private int usure = 0;
     private double precision = 0.6;
 
     public Weapon(String _name){
@@ -26,7 +26,7 @@ public class Weapon implements IWeapon {
     }
     @Override
     public int getDamage() {
-        usure--;
+        usure++;
         return  (int) (damage * precision);
     }
     @Override

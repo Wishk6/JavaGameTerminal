@@ -49,7 +49,7 @@ public class Game {
             Asker.clear();
             Asker.println("enemy loses " + character.getAttackDamage() + "HP !");
             enemy.attack(character);
-            character.attack(enemy, character.getWeaponById(weaponId - 1));
+            character.attack(enemy, weaponId - 1);
             printStats(enemy);
         }
         if (!enemy.isAlive() && character.isAlive()) {
