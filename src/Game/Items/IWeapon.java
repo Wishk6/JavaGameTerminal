@@ -1,13 +1,15 @@
 package Game.Items;
 
-public interface IWeapon {    // le sac pèse 10 est une arme pèse 1
+import Game.Units.IEntity;
+
+public interface IWeapon {
+    boolean isEquipped();
+    void repair(float percent);
     String getName();
     int getUsure();
+    int getWeight();
     int getDamage();
-    int getPrecision();
+    float getPrecision();
     int getRange();
-    //int getWeight();
-    //void repair(float percent);
-    //boolean isEquipped();
-    // void attack(IPersonnage);
+    //void attack(IEntity target);
 }

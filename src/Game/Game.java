@@ -3,7 +3,6 @@ package Game;
 import Game.Misc.Asker;
 import Game.Units.Character;
 import Game.Units.Class.*;
-import Game.Units.Ennemies.*; // random
 import Game.Units.Enemy;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +36,7 @@ public class Game {
     private boolean fight(){
          enemy = getRandomEnemy(); // create random enemy
 
-        Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttackDamage() + " damages each turn");
+        Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttack() + " damages each turn");
         printStats(enemy);
         while (enemy.isAlive() && character.isAlive()){
 
@@ -45,11 +44,12 @@ public class Game {
             Asker.println("");
 
             int weaponId = Asker.askChoice(character.getWeaponNames(), "Select a weapon to attack this " + enemy.getName());
+            character.setMainWeapon(weaponId - 1);
             Asker.println("You are attacking " + enemy.getName());
             Asker.clear();
-            Asker.println("enemy loses " + character.getAttackDamage() + "HP !");
+            Asker.println("enemy loses " + character.getAttack() + "HP !");
             enemy.attack(character);
-            character.attack(enemy, weaponId - 1);
+            character.attack(enemy);
             printStats(enemy);
         }
         if (!enemy.isAlive() && character.isAlive()) {

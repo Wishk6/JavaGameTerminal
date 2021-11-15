@@ -1,14 +1,8 @@
 package Game.Units;
 
-import Game.Items.IWeapon;
-import Game.Items.WeaponBag;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Character extends Entity {
     public Character(String _name, int _attackDamage, int _hp) {
-        super(_name, 1, _hp, _attackDamage);
+        super(_name, _hp, _attackDamage);
     }
 }
 
