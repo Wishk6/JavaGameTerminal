@@ -12,12 +12,11 @@ public abstract class Entity implements IEntity {
     protected float attackDamage;
     protected float armor;
     protected String type;
-    private Entity instance;
     protected IArme mainWeapon;
     protected WeaponBag weapons = new WeaponBag();
 
 
-        //Init
+    //Init
     protected Entity(String _name, float _hp, float _attackDamage, String _type){
         name = _name;
         hp = _hp;
@@ -25,7 +24,7 @@ public abstract class Entity implements IEntity {
         type = _type;
     }
 
-        //Getters
+    //Getters
     public List<String> getWeaponNames(){
         List<String> names = new ArrayList<>();
 
@@ -40,9 +39,14 @@ public abstract class Entity implements IEntity {
     public float getHp(){
         return hp;
     }
+
     public float getAttack(){
-        return attackDamage + mainWeapon.getDamage();
+        if (mainWeapon.getDamage() !=0)
+            return attackDamage + mainWeapon.getDamage();
+        else
+            return 0;
     }
+
     public String getType(){
         return type;
     }
@@ -54,19 +58,20 @@ public abstract class Entity implements IEntity {
     }
 
 
-        //Setters
+    //Setters
     public void setMainWeapon(int weaponId) {
         mainWeapon = weapons.get(weaponId);
     }
 
 
     //Other
-    public void attack(IEntity entity){ // enemy.attack(character)
+    public void attack(IEntity entity){
+
         entity.defend(this, mainWeapon, getAttack());
     }
 
     public void defend(IEntity instance, IArme weapon , float damage){
-        hp -= damage;  // pb : l'entity s'attaque elle même
+        hp -= damage;
     }
 
     public boolean isAlive(){

@@ -22,14 +22,15 @@ public class WeaponList {
             new Weapon("Axe", 20 , 1, 1),
             new Weapon("DoubleAxe", 20 , 1, 1),
             new Weapon("DoubleDagger", 20 , 1, 1),
-            new Weapon("Flail", 20 , 1, 1)
+            new Weapon("Flail", 20 , 1, 1),
+            new Weapon("GemStone", 10 , 1, 1)
     );
     static private List<Weapon> twoHandedWeapon = Arrays.asList(
-            new Weapon("WarHammer", 20 , 0.9f, 0.1f),
-            new Weapon("BattleAxe", 18 , 0.8f, 0.1f),
+            new Weapon("WarHammer", 20 , 0.95f, 0.1f),
+            new Weapon("BattleAxe", 18 , 0.89f, 0.1f),
             new Weapon("LongSword", 15 , 1, 0.4f),
-            new Weapon("Spear", 15 , 0.5f, 1),
-            new Weapon("Nadachi", 12 , 1, 1),
+            new Weapon("Spear", 15 , 0.89f, 1),
+            new Weapon("Nadachi", 12 , 1, 0.9f),
             new Weapon("Ohmlatl", 15 , 0.9f, 0.8f)
     );
     static private List<Weapon> rangedWeapon = Arrays.asList(

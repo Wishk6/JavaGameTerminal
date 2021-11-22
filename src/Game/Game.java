@@ -1,5 +1,6 @@
 package Game;
 
+import Game.Items.Weapon;
 import Game.Misc.Asker;
 import Game.Units.Character;
 import Game.Units.Class.*;
@@ -11,7 +12,6 @@ public class Game {
     private static final Game game = new Game();
     private Character character;
     private int score = 0;
-    private Enemy enemy;
 
     private Game(){}
 
@@ -34,12 +34,11 @@ public class Game {
     }
 
     private boolean fight(){
-         enemy = getRandomEnemy(); // create random enemy
+        Enemy enemy = getRandomEnemy(); // create random enemy
 
         Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttack() + " damages each turn");
         printStats(enemy);
         while (enemy.isAlive() && character.isAlive()){
-
 
             Asker.println("");
 
@@ -47,7 +46,11 @@ public class Game {
             character.setMainWeapon(weaponId - 1);
             Asker.println("You are attacking " + enemy.getName());
             Asker.clear();
-            Asker.println("enemy loses " + character.getAttack() + "HP !");
+            if (character.getAttack() != 0) {
+                Asker.println("enemy loses " + character.getAttack() + "HP !");
+            } else {
+                Asker.println("Your weapon is broken !");
+            }
             enemy.attack(character);
             character.attack(enemy);
             printStats(enemy);

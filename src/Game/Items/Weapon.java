@@ -16,7 +16,7 @@ public class Weapon implements IArme {
         range = _range;
     }
 
-        //Getters
+    //Getters
     @Override
     public String getName(){
         return name;
@@ -27,7 +27,13 @@ public class Weapon implements IArme {
     }
     @Override
     public float getDamage() { // return a string with damage * precision de l'arme
-        return  (int) (damage * precision);
+
+        int precisionHandler = (int) (Math.random() * 100 * precision);
+        usure++;
+        if (precisionHandler >= 15)
+            return  damage * precision;
+        else
+            return 0;
     }
 
     @Override
@@ -48,7 +54,7 @@ public class Weapon implements IArme {
     }
 
 
-        //Setters
+    //Setters
     public void setEquipped(boolean _equipped){
         equipped = _equipped;
     }
