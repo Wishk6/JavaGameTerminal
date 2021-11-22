@@ -1,6 +1,6 @@
 package Game.Units;
 
-import Game.Items.IWeapon;
+import Game.Items.IArme;
 
 public interface IEntity {
     String getName();
@@ -8,7 +8,7 @@ public interface IEntity {
     float getHp();
     float getAttack();
     void attack(IEntity target);
-    void defend(IEntity attacker, IWeapon weapon ,float damage);
+    void defend(IEntity attacker, IArme weapon , float damage);
     float getDefense();
-    IWeapon getMainWeapon();
+    IArme getMainWeapon();
 }

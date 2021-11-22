@@ -4,8 +4,8 @@ import Game.Units.Enemy;
 
 public class Cyclop extends Enemy {
 
-    public Cyclop(int hp, int dmg) {
-        super("Cyclop",hp, dmg);
+    public Cyclop(int hp, int dmg, String type) {
+        super("Cyclop",hp, dmg, type);
     }
 }
 

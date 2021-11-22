@@ -1,8 +1,8 @@
 package Game.Units;
 
 public abstract class Character extends Entity {
-    public Character(String _name, int _attackDamage, int _hp) {
-        super(_name, _hp, _attackDamage);
+    public Character(String _name, int _attackDamage, int _hp, String _type) {
+        super(_name, _hp, _attackDamage, _type);
     }
 }
 

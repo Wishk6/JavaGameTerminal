@@ -73,7 +73,7 @@ public class Game {
         String randomEnemy = _charactersClass.get((int) (Math.random() * _charactersClass.size())); // get random index
         int randomDamage = (int) (Math.random() * 60); // 60 dmg max
         int randomHp = (int) (Math.random() * 300); // random max 300 hp
-        return new Enemy(randomEnemy,randomHp,randomDamage);
+        return new Enemy(randomEnemy,randomHp,randomDamage, randomEnemy);
     }
 
     private void createCharacter(){

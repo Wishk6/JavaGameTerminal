@@ -4,7 +4,7 @@ import Game.Units.Enemy;
 
 public class Giant extends Enemy {
 
-    public Giant(int hp, int dmg) {
-        super("Giant",hp, dmg);
+    public Giant(int hp, int dmg, String type) {
+        super("Giant",hp, dmg, type);
     }
 }

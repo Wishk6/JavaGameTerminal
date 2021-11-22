@@ -2,14 +2,15 @@ package Game.Items;
 
 import Game.Units.IEntity;
 
-public interface IWeapon {
+public interface IArme {
     boolean isEquipped();
     void repair(float percent);
     String getName();
-    int getUsure();
-    int getWeight();
-    int getDamage();
+    float getUsure();
+    float getWeight();
+    float getDamage();
     float getPrecision();
-    int getRange();
+
+    float getRange(); // float
     //void attack(IEntity target);
 }

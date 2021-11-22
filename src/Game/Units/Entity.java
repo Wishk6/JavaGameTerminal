@@ -1,6 +1,6 @@
 package Game.Units;
 
-import Game.Items.IWeapon;
+import Game.Items.IArme;
 import Game.Items.WeaponBag;
 
 import java.util.ArrayList;
@@ -11,23 +11,25 @@ public abstract class Entity implements IEntity {
     protected float hp;
     protected float attackDamage;
     protected float armor;
-    protected IWeapon mainWeapon;
+    protected String type;
+    private Entity instance;
+    protected IArme mainWeapon;
     protected WeaponBag weapons = new WeaponBag();
 
 
         //Init
-    protected Entity(String _name, float _hp, float _attackDamage){
+    protected Entity(String _name, float _hp, float _attackDamage, String _type){
         name = _name;
         hp = _hp;
         attackDamage = _attackDamage;
+        type = _type;
     }
-
 
         //Getters
     public List<String> getWeaponNames(){
         List<String> names = new ArrayList<>();
 
-        for(IWeapon weapon : weapons){
+        for(IArme weapon : weapons){
             names.add(weapon.getName());
         }
         return names;
@@ -42,12 +44,12 @@ public abstract class Entity implements IEntity {
         return attackDamage + mainWeapon.getDamage();
     }
     public String getType(){
-        return "";
+        return type;
     }
     public float getDefense(){
         return armor;
     }
-    public IWeapon getMainWeapon(){
+    public IArme getMainWeapon(){
         return mainWeapon;
     }
 
@@ -57,13 +59,16 @@ public abstract class Entity implements IEntity {
         mainWeapon = weapons.get(weaponId);
     }
 
+
     //Other
-    public void attack(IEntity entity){
-        entity.defend(entity, entity.getMainWeapon(), entity.getAttack());
+    public void attack(IEntity entity){ // enemy.attack(character)
+        entity.defend(this, mainWeapon, getAttack());
     }
-    public void defend(IEntity attacker, IWeapon weapon ,float damage){
-        hp -= damage + weapon.getDamage();
+
+    public void defend(IEntity instance, IArme weapon , float damage){
+        hp -= damage;  // pb : l'entity s'attaque elle même
     }
+
     public boolean isAlive(){
         return hp > 0;
     }

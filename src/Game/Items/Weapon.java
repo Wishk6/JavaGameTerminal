@@ -1,24 +1,19 @@
 package Game.Items;
 
-public class Weapon implements IWeapon {
+public class Weapon implements IArme {
     private final String name;
-    private int damage;
-    private int usure = 0;
-    private int range;
-    private float precision = 1;
+    private float damage;
+    private float usure = 0;
+    private float range;
+    private float precision;
     private boolean equipped = false;
 
-        //Init
-    public Weapon(String _name){
-        name = _name;
-        damage = 10;
-        range = 1;
-    }
-    public Weapon(String _name, int _damage, float _precision){
+
+    public Weapon(String _name, int _damage, float _precision, float _range){
         name = _name;
         damage = _damage;
         precision = _precision;
-        range = 1;
+        range = _range;
     }
 
         //Getters
@@ -27,26 +22,28 @@ public class Weapon implements IWeapon {
         return name;
     }
     @Override
-    public int getUsure() {
+    public float getUsure() {
         return usure;
     }
     @Override
-    public int getDamage() {
-        usure++;
+    public float getDamage() { // return a string with damage * precision de l'arme
         return  (int) (damage * precision);
     }
+
     @Override
     public float getPrecision() {
         return precision;
     }
     @Override
-    public int getRange() {
+    public float getRange() {
         return range;
     }
+
     public boolean isEquipped(){
         return equipped;
     }
-    public int getWeight(){
+
+    public float getWeight(){
         return 1;
     }
 
@@ -56,6 +53,6 @@ public class Weapon implements IWeapon {
         equipped = _equipped;
     }
     public void repair(float percent){
-
+        usure -=percent;
     }
 }
