@@ -1,6 +1,6 @@
 package Game.Items;
 
-import Game.Units.IEntity;
+import Game.Units.IPersonnage;
 
 public interface IArme {
     boolean isEquipped();
@@ -12,5 +12,5 @@ public interface IArme {
     float getPrecision();
 
     float getRange(); // float
-    void attack(IEntity target);
+    void attack(IPersonnage target);
 }

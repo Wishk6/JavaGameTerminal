@@ -6,7 +6,7 @@ import Game.Items.WeaponBag;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Entity implements IEntity {
+public abstract class Entity implements IPersonnage {
     protected String name;
     protected float hp;
     protected float attackDamage;
@@ -65,12 +65,12 @@ public abstract class Entity implements IEntity {
 
 
     //Other
-    public void attack(IEntity entity){
+    public void attack(IPersonnage entity){
 
         entity.defend(this, mainWeapon, getAttack());
     }
 
-    public void defend(IEntity instance, IArme weapon , float damage){
+    public void defend(IPersonnage instance, IArme weapon , float damage){
         hp -= damage;
     }
 
