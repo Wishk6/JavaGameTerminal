@@ -1,5 +1,8 @@
 package Game.Items;
 
+import Game.Units.Entity;
+import Game.Units.IEntity;
+
 public class Weapon implements IArme {
     private final String name;
     private float damage;
@@ -60,5 +63,7 @@ public class Weapon implements IArme {
     }
     public void repair(float percent){
         usure -=percent;
+    }
+    public void attack(IEntity entity){
     }
 }

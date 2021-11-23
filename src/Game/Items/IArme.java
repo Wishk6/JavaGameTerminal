@@ -12,5 +12,5 @@ public interface IArme {
     float getPrecision();
 
     float getRange(); // float
-    //void attack(IEntity target);
+    void attack(IEntity target);
 }
