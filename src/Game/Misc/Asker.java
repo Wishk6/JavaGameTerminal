@@ -29,8 +29,6 @@ public class Asker {
         String result = "";
         boolean confirmed = false;
 
-
-
         while (!confirmed){
             println(question);
             result = scanner();

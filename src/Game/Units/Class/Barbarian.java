@@ -5,7 +5,7 @@ import Game.Units.Character;
 
 public class Barbarian extends Character {
     public Barbarian(String _name) {
-        super(_name, 75, 500, "Enemy");
+        super(_name, 75, 500, "Character", 0, 0);
         weapons.addAll(WeaponList.getTwoHandedWeapon());
     }
 }

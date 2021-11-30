@@ -5,7 +5,7 @@ import Game.Units.Character;
 
 public class Mage extends Character {
     public Mage(String _name) {
-        super(_name, 150, 250, "Enemy");
+        super(_name, 150, 250, "Character", 0, 0);
         weapons.addAll(WeaponList.getMagicalWeapon());
     }
 }
