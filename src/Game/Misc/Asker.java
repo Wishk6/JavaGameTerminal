@@ -54,6 +54,7 @@ public class Asker {
     private static String scanner(){
         Scanner scan = new Scanner(System.in);
         System.out.print("Your choice: ");
+        scan.close();
         return scan.nextLine();
     }
 
