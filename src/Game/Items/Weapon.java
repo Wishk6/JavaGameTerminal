@@ -11,6 +11,7 @@ public class Weapon implements IArme {
     private boolean equipped = false;
 
 
+
     public Weapon(String _name, int _damage, float _precision, float _range){
         name = _name;
         damage = _damage;
@@ -30,10 +31,10 @@ public class Weapon implements IArme {
     @Override
     public float getDamage() { // return a string with damage * precision de l'arme
 
-        int precisionHandler = (int) (Math.random() * 100 * precision);
+        double precisionHandler = Math.random();
         usure++;
-        if (precisionHandler >= 15)
-            return  damage * precision;
+        if (precisionHandler < precision)
+            return  damage;
         else
             return 0;
     }
@@ -63,6 +64,7 @@ public class Weapon implements IArme {
     public void repair(float percent){
         usure -=percent;
     }
-    public void attack(IPersonnage entity){
+    public float attack(IPersonnage entity){
+        return 0;
     }
 }

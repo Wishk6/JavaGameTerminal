@@ -1,6 +1,5 @@
 package Game;
 
-import Game.Items.Weapon;
 import Game.Misc.Asker;
 import Game.Units.Character;
 import Game.Units.Class.*;
@@ -49,7 +48,7 @@ public class Game {
             if (character.getAttack() != 0) {
                 Asker.println("enemy loses " + character.getAttack() + "HP !");
             } else {
-                Asker.println("Your weapon is broken !");
+                Asker.println("No damage dealt !");
             }
             enemy.attack(character);
             character.attack(enemy);

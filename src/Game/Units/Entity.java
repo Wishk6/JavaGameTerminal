@@ -57,12 +57,11 @@ public abstract class Entity implements IPersonnage {
         return mainWeapon;
     }
 
-
     //Setters
     public void setMainWeapon(int weaponId) {
         mainWeapon = weapons.get(weaponId);
     }
-
+    public void setMainWeapon(IArme weapon){}
 
     //Other
     public void attack(IPersonnage entity){
@@ -75,6 +74,6 @@ public abstract class Entity implements IPersonnage {
     }
 
     public boolean isAlive(){
-        return hp > 0;
+        return hp > 0.0f;
     }
 }

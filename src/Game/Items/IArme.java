@@ -10,7 +10,6 @@ public interface IArme {
     float getWeight();
     float getDamage();
     float getPrecision();
-
-    float getRange(); // float
-    void attack(IPersonnage target);
+    float getRange();
+    float attack(IPersonnage target);
 }

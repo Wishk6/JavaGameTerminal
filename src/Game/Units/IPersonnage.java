@@ -7,8 +7,9 @@ public interface IPersonnage {
     String getType();
     float getHp();
     float getAttack();
+    float getDefense();
     void attack(IPersonnage target);
     void defend(IPersonnage attacker, IArme weapon , float damage);
-    float getDefense();
     IArme getMainWeapon();
+    void setMainWeapon(IArme weapon);
 }
