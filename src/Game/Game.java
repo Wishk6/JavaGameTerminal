@@ -38,7 +38,7 @@ public class Game {
     private boolean fight() {
         Enemy enemy = getRandomEnemy(); // create random enemy
 
-        Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttack() + " damages each turn");
+        Asker.println("A " + enemy.getName() + " is attacking you ! It will deal " + enemy.getAttack() + " damages each turn\n");
         printStats(enemy);
         while (enemy.isAlive() && character.isAlive()) {
 
@@ -64,11 +64,21 @@ public class Game {
             character.setMainWeapon(weaponId - 1);
             Asker.println("You are attacking " + enemy.getName());
             Asker.clear();
-            if (character.getAttack() != 0 && enemy.getPositionX() == character.getPositionX()  && enemy.getPositionY() == character.getPositionY()) {
-                Asker.println("enemy loses " + character.getAttack() + "HP !");
-            } else {
-                Asker.println("No damage dealt ! Maybe you're too far away, of your weapon is broken !");
+
+            if (character.getAttack() > 0 && (enemy.getPositionX() != character.getPositionX() || enemy.getPositionY() != character.getPositionY())) {
+                Asker.println("No damage dealt ! You are too far away !"); // - 4 usure
+
+            } else if (character.getAttack() > 0 && enemy.getPositionX() == character.getPositionX() && enemy.getPositionY() == character.getPositionY()) {
+                Asker.println("enemy loses " + character.getAttack() + "HP !"); // - 6 usure
+
+            } else if (character.getAttack() == 0) {
+                Asker.println("No damage dealt ! You missed your shot !"); // - 8
+
+            } else if (character.getAttack() == -1) {
+                Asker.println("No damage dealt ! Your weapon is worn out, repair it !"); // - 10
             }
+
+
             enemy.attack(character);
             character.attack(enemy);
             printStats(enemy);

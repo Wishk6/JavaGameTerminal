@@ -1,5 +1,6 @@
 package Game.Items;
 
+import Game.Misc.Asker;
 import Game.Units.IPersonnage;
 
 public class Weapon implements IArme {
@@ -11,8 +12,7 @@ public class Weapon implements IArme {
     private boolean equipped = false;
 
 
-
-    public Weapon(String _name, int _damage, float _precision, float _range){
+    public Weapon(String _name, int _damage, float _precision, float _range) {
         name = _name;
         damage = _damage;
         precision = _precision;
@@ -21,50 +21,62 @@ public class Weapon implements IArme {
 
     //Getters
     @Override
-    public String getName(){
+    public String getName() {
         return name;
     }
+
     @Override
     public float getUsure() {
         return usure;
     }
-    @Override
-    public float getDamage() { // return a string with damage * precision de l'arme
 
-        double precisionHandler = Math.random();
-        usure++;
-        if (precisionHandler < precision)
-            return  damage;
-        else
-            return 0;
+    @Override
+    public float getDamage() { // return string damage * precision
+        if (getUsure() < 50) {
+            double precisionHandler = Math.random();
+
+            System.out.println(usure);
+
+            if (precisionHandler < precision) {
+                usure++;
+                return damage;
+            } else { // if precision too low
+                return 0;
+            }
+        } else { // if too used
+            return -1;
+        }
     }
 
     @Override
     public float getPrecision() {
         return precision;
     }
+
     @Override
     public float getRange() {
         return range;
     }
 
-    public boolean isEquipped(){
+    public boolean isEquipped() {
         return equipped;
     }
 
-    public float getWeight(){
+    public float getWeight() {
         return 1;
     }
 
 
     //Setters
-    public void setEquipped(boolean _equipped){
+    public void setEquipped(boolean _equipped) {
         equipped = _equipped;
     }
-    public void repair(float percent){
-        usure -=percent;
+
+    public void repair(float percent) {
+        usure -= percent;
     }
-    public float attack(IPersonnage entity){
+
+    public float attack(IPersonnage entity) {
         return 0;
     }
 }

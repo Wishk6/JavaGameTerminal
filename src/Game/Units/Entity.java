@@ -46,10 +46,10 @@ public abstract class Entity implements IPersonnage {
     }
 
     public float getAttack() {
-        if (mainWeapon.getDamage() != 0)
+        if (mainWeapon.getDamage() > 0)
             return attackDamage + mainWeapon.getDamage();
         else
-            return 0;
+            return mainWeapon.getDamage();
     }
 
     //Getters
@@ -82,11 +82,11 @@ public abstract class Entity implements IPersonnage {
     }
 
     public void setPositionX(float newXPosition) {
-        positionX += newXPosition;
+        positionX = newXPosition;
     }
 
     public void setPositionY(float newYPosition) {
-        positionY += newYPosition;
+        positionY = newYPosition;
     }
 
     //Other
