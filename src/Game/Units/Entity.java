@@ -18,13 +18,23 @@ public abstract class Entity implements IPersonnage {
     protected WeaponBag weapons = new WeaponBag();
 
     //Init
-    protected Entity(String _name, float _hp, float _attackDamage, String _type,float _positionX, float _positionY) {
+    protected Entity(String _name, float _hp, float _attackDamage, String _type,float _positionX, float _positionY){
         name = _name;
         hp = _hp;
         attackDamage = _attackDamage;
         type = _type;
         positionX = _positionX;
         positionY = _positionY;
+        armor = 0.0f;
+    }
+    protected Entity(String _name, float _hp, float _attackDamage, String _type,float _positionX, float _positionY, float _armor){
+        name = _name;
+        hp = _hp;
+        attackDamage = _attackDamage;
+        type = _type;
+        positionX = _positionX;
+        positionY = _positionY;
+        armor = _armor;
     }
 
     //Getters
@@ -89,13 +99,21 @@ public abstract class Entity implements IPersonnage {
         positionY = newYPosition;
     }
 
+    public void SetArmor(float newArmor){
+        armor = newArmor;
+    }
+
+    public void AddArmor(float armorToAdd){
+        armor += armorToAdd;
+    }
+
     //Other
     public void attack(IPersonnage entity) {
         entity.defend(this, mainWeapon, getAttack());
     }
 
     public void defend(IPersonnage instance, IArme weapon, float damage) {
-        hp -= damage;
+        hp -= damage + armor;
     }
 
     public boolean isAlive() {
