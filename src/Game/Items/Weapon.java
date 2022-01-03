@@ -35,8 +35,6 @@ public class Weapon implements IArme {
         if (getUsure() < 50) {
             double precisionHandler = Math.random();
 
-            System.out.println(usure);
-
             if (precisionHandler < precision) {
                 usure++;
                 return damage;

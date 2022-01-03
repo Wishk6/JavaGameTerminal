@@ -1,8 +1,10 @@
 package Game.Units;
 
+import java.util.List;
+
 public abstract class Character extends Entity {
-    public Character(String _name, int _attackDamage, int _hp, String _type, float _positionX, float _positionY) {
-        super(_name, _hp, _attackDamage, _type, _positionX, _positionY);
+    public Character(String _name, int _hp, int _attackDamage,float _defense, String _type, float _positionX, float _positionY, List<String> _shout) {
+        super(_name, _hp, _attackDamage,_defense, _type, _positionX, _positionY, _shout);
         positionX = 0;
         positionY = 0;
     }

@@ -2,9 +2,11 @@ package Game.Units.Ennemies;
 
 import Game.Units.Enemy;
 
+import java.util.List;
+
 public class Vampire extends Enemy {
 
-    public Vampire(int hp, int dmg, String type, float positionX, float positionY) {
-        super("Vampire", hp, dmg, type, positionX, positionY);
+    public Vampire(int hp, int dmg, float defense, String type, float positionX, float positionY, List<String> shout) {
+        super("Vampire", hp, dmg, defense, type, positionX, positionY, shout);
     }
 }

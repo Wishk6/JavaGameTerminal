@@ -2,6 +2,7 @@ package Game.Units;
 
 import Game.Items.IArme;
 import Game.Items.WeaponBag;
+import Game.Misc.Asker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,21 +11,24 @@ public abstract class Entity implements IPersonnage {
     protected String name;
     protected float hp;
     protected float attackDamage;
-    protected float armor;
+    protected float defense;
     protected float positionX;
     protected float positionY;
+    protected List<String> shout;
     protected String type;
     protected IArme mainWeapon;
     protected WeaponBag weapons = new WeaponBag();
 
     //Init
-    protected Entity(String _name, float _hp, float _attackDamage, String _type,float _positionX, float _positionY) {
+    protected Entity(String _name, float _hp, float _attackDamage, float _defense, String _type, float _positionX, float _positionY, List<String> _shout) {
         name = _name;
         hp = _hp;
         attackDamage = _attackDamage;
+        defense = _defense;
         type = _type;
         positionX = _positionX;
         positionY = _positionY;
+        shout = _shout;
     }
 
     //Getters
@@ -58,7 +62,7 @@ public abstract class Entity implements IPersonnage {
     }
 
     public float getDefense() {
-        return armor;
+        return defense;
     }
 
     public IArme getMainWeapon() {
@@ -71,6 +75,10 @@ public abstract class Entity implements IPersonnage {
 
     public float getPositionY() {
         return positionY;
+    }
+
+    public String getShout(int index) {
+        return shout.get(index);
     }
 
     //Setters
@@ -89,13 +97,14 @@ public abstract class Entity implements IPersonnage {
         positionY = newYPosition;
     }
 
+
     //Other
     public void attack(IPersonnage entity) {
         entity.defend(this, mainWeapon, getAttack());
     }
 
     public void defend(IPersonnage instance, IArme weapon, float damage) {
-        hp -= damage;
+        hp -= damage * (1 - (defense / 100));
     }
 
     public boolean isAlive() {
