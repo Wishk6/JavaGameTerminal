@@ -36,7 +36,7 @@ public abstract class Entity implements IPersonnage {
         List<String> names = new ArrayList<>();
 
         for (IArme weapon : weapons) {
-            names.add(weapon.getName());
+            names.add(weapon.getName() + " (usure: " + (int)weapon.getUsure() + "/50)");
         }
         return names;
     }

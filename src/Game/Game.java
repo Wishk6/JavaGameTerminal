@@ -60,16 +60,21 @@ public class Game {
             Asker.println("Your Y position : " + character.getPositionY());
             Asker.println("Enemy X position : " + enemy.getPositionX());
             Asker.println("Enemy Y position : " + enemy.getPositionY());
+            Asker.println("");
+
             int weaponId = Asker.askChoice(character.getWeaponNames(), "Select a weapon to attack this " + enemy.getName());
             character.setMainWeapon(weaponId - 1);
             Asker.println("You are attacking " + enemy.getName());
             Asker.clear();
 
-            if (character.getAttack() > 0 && (enemy.getPositionX() != character.getPositionX() || enemy.getPositionY() != character.getPositionY())) {
+            final float xDistance = Math.abs(enemy.getPositionX() - character.getPositionX());
+            final float yDistance = Math.abs(enemy.getPositionY() - character.getPositionY());
+
+            if (xDistance >= character.getMainWeapon().getRange() && yDistance >= character.getMainWeapon().getRange()) {
                 Asker.println("\u001B[31m" + "No damage dealt ! You are too far away !" + "\u001B[0m"); // - 4 usure
                 printStats(enemy);
 
-            } else if (character.getAttack() > 0 && enemy.getPositionX() == character.getPositionX() && enemy.getPositionY() == character.getPositionY()) {
+            }else if(character.getAttack() > 0){
                 Asker.println("\u001B[34m" + character.getShout(0) + "\u001B[0m" + "\n"); // attack shout
                 enemy.attack(character);
 
@@ -78,14 +83,13 @@ public class Game {
                 Asker.println("\u001B[32m" + "enemy loses " + character.getAttack() * (1 - (enemy.getDefense() / 100)) + "HP !" + "\u001B[0m"); // - 6 usure
 
                 printStats(enemy);
-
             } else if (character.getAttack() == 0) {
                 Asker.println("\u001B[31m" + "No damage dealt ! You missed your shot !" + "\u001B[0m"); // - 8
                 enemy.attack(character);
                 printStats(enemy);
 
-            } else if (character.getAttack() == -1) {
-                Asker.println("\u001B[31m" + "No damage dealt ! Your weapon is worn out, repair it !" + "\u001B[0m"); // - 10
+            } else if (character.getMainWeapon().getUsure() >= 50) {
+                Asker.println("\u001B[31m" + "No damage dealt ! Your weapon is worn out !" + "\u001B[0m"); // - 10
                 enemy.attack(character);
                 printStats(enemy);
             }

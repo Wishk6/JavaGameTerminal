@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WeaponList {
-    static private List<IArme> magicalWeapon = Arrays.asList(
+    static private final List<IArme> magicalWeapon = Arrays.asList(
             new Weapon("Tome", 15 , 1, 4),
             new Weapon("Wand", 13 , 1, 6),
             new Weapon("Staff", 12 , 1, 2),
@@ -17,7 +17,7 @@ public class WeaponList {
             new Weapon("Glove", 20 , 1, 1),
             new Weapon("GemStone", 10 , 1, 3)
     );
-    static private List<IArme> oneHandedWeapon = Arrays.asList(
+    static private final List<IArme> oneHandedWeapon = Arrays.asList(
             new Weapon("Katana", 20 , 1, 1.5f),
             new Weapon("Sword", 20 , 1, 1),
             new Weapon("ShieldSword", 20 , 1, 1),
@@ -27,7 +27,7 @@ public class WeaponList {
             new Weapon("Flail", 20 , 1, 2),
             new Weapon("GemStone", 10 , 1, 3)
     );
-    static private List<IArme> twoHandedWeapon = Arrays.asList(
+    static private final List<IArme> twoHandedWeapon = Arrays.asList(
             new Weapon("WarHammer", 20 , 0.95f, 1),
             new Weapon("BattleAxe", 18 , 0.89f, 1),
             new Weapon("LongSword", 15 , 1, 1.5f),
@@ -37,7 +37,7 @@ public class WeaponList {
             new BlazingArrow()
     );
 
-    static private List<IArme> rangedWeapon = Arrays.asList(
+    static private final List<IArme> rangedWeapon = Arrays.asList(
             new Weapon("Bow", 10 , 1, 6),
             new Weapon("CrossBow", 10 , 1, 6),
             new Weapon("Kunai", 10 , 1, 5),
