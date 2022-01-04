@@ -1,9 +1,10 @@
 package Game;
 
 import Game.Misc.Asker;
-import Game.Units.Character;
 import Game.Units.Class.*;
 import Game.Units.Enemy;
+import Game.Units.TribuChef;
+import Game.Units.IPersonnage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Objects;
 
 public class Game {
     private static final Game game = new Game();
-    private Character character;
+    private IPersonnage character;
     private int score = 0;
 
     private Game() {
@@ -48,6 +49,7 @@ public class Game {
             Asker.println("Enemy X position : " + enemy.getPositionX());
             Asker.println("Enemy Y position : " + enemy.getPositionY());
             String positionSet = Asker.askEntry(" Do you want to move ? (O/N)");
+
             if (Objects.equals(positionSet, "O")) {
                 character.setPositionX(enemy.getPositionX()); // nous colle à l"enemi
                 character.setPositionY(enemy.getPositionY());
@@ -62,11 +64,33 @@ public class Game {
             Asker.println("Enemy Y position : " + enemy.getPositionY());
             Asker.println("");
 
-            int weaponId = Asker.askChoice(character.getWeaponNames(), "Select a weapon to attack this " + enemy.getName());
-            character.setMainWeapon(weaponId - 1);
-            Asker.println("You are attacking " + enemy.getName());
-            Asker.clear();
 
+
+            if (character.getType().equals("Chef")) {
+                final TribuChef chef = (TribuChef) character;
+                int choiceId = Asker.askChoice(List.of("Attack with my weapon","Attack with my soldiers"), "Select a way to attack this " + enemy.getName());
+                Asker.println("Your team is attacking " + enemy.getName());
+                Asker.println("Choices" + choiceId);
+                if (choiceId == 1) {
+                    chef.attack(enemy);
+                } else {
+                    chef.attackGroup(enemy);
+                    for(IPersonnage ent : chef.getTribu()){
+                        Asker.println(ent.getShout(0));
+                    }
+                }
+                enemy.attack(character);
+
+                Asker.println("\u001B[34m" + character.getShout(0) + "\u001B[0m" + "\n");  // defense shout
+                Asker.println("\u001B[34m" + enemy.getShout(1) + "\u001B[0m" + "\n");  // defense shout
+                Asker.println("\u001B[32m" + "enemy loses " + character.getAttack() * (1 - (enemy.getDefense() / 100)) + "HP !" + "\u001B[0m");
+
+            } else {
+                int weaponId = Asker.askChoice(character.getWeaponNames(), "Select a weapon to attack this " + enemy.getName());
+                character.setMainWeapon(weaponId - 1);
+                Asker.println("You are attacking " + enemy.getName());
+                Asker.clear();
+            }
             final float xDistance = Math.abs(enemy.getPositionX() - character.getPositionX());
             final float yDistance = Math.abs(enemy.getPositionY() - character.getPositionY());
 
@@ -74,11 +98,14 @@ public class Game {
                 Asker.println("\u001B[31m" + "No damage dealt ! You are too far away !" + "\u001B[0m"); // - 4 usure
                 printStats(enemy);
 
-            }else if(character.getAttack() > 0){
-                Asker.println("\u001B[34m" + character.getShout(0) + "\u001B[0m" + "\n"); // attack shout
-                enemy.attack(character);
+            } else if (character.getAttack() > 0) {
 
+
+                enemy.attack(character);
+                Asker.println("\u001B[34m" + enemy.getShout(0) + "\u001B[0m" + "\n"); // atta shout
+                Asker.println("\u001B[34m" + character.getShout(1) + "\u001B[0m" + "\n"); //  def shout
                 character.attack(enemy);
+                Asker.println("\u001B[34m" + character.getShout(0) + "\u001B[0m" + "\n"); // atta shout
                 Asker.println("\u001B[34m" + enemy.getShout(1) + "\u001B[0m" + "\n");  // defense shout
                 Asker.println("\u001B[32m" + "enemy loses " + character.getAttack() * (1 - (enemy.getDefense() / 100)) + "HP !" + "\u001B[0m"); // - 6 usure
 
@@ -165,7 +192,11 @@ public class Game {
                 "Barbarian",
                 "Knight",
                 "Mage",
-                "Trapper"
+                "Trapper",
+                "Chef Barbarian",
+                "Chef Knight",
+                "Chef Mage",
+                "Chef Trapper"
         );
 
         String playerName = Asker.askEntry("Enter your name");
@@ -176,6 +207,10 @@ public class Game {
             case 2 -> character = new Knight(playerName);
             case 3 -> character = new Mage(playerName);
             case 4 -> character = new Trapper(playerName);
+            case 5 -> character = new TribuChef(List.of(new Barbarian("")), "Chef", 40, 1000, 30, 0, 0);
+            case 6 -> character = new TribuChef(List.of(new Mage("")), "Chef", 150, 500, 15, 0, 0);
+            case 7 -> character = new TribuChef(List.of(new Trapper("")), "Chef", 125, 600, 15, 0, 0);
+            case 8 -> character = new TribuChef(List.of(new Knight("")), "Chef", 60, 1200, 30, 0, 0);
         }
     }
 

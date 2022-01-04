@@ -7,11 +7,12 @@ import java.util.Arrays;
 
 public class Trapper extends Character {
     public Trapper(String _name) {
-        super(_name, 125, 300, 15, "Character", 0, 0,
+        super(_name, 300, 125, 15, "Chasseur", 0, 0,
                 Arrays.asList("J'attaque et je suis un chasseur",
                         "Je me def et je suis un chasseur",
                         "Je meuuuuurs et je suis un chasseur ")
         );
         weapons.addAll(WeaponList.getRangedWeapon());
+        mainWeapon = WeaponList.getRangedWeapon().get(0);
     }
 }
