@@ -2,8 +2,6 @@ package Game.Units;
 
 import Game.Items.IArme;
 import Game.Items.Weapon;
-import Game.Units.IPersonnage;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

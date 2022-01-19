@@ -5,10 +5,10 @@ import Game.Units.IPersonnage;
 
 public class Weapon implements IArme {
     private final String name;
-    private float damage;
+    private final float damage;
     private float usure = 0;
-    private float range;
-    private float precision;
+    private final float range;
+    private final float precision;
     private boolean equipped = false;
 
 

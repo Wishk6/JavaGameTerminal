@@ -65,20 +65,17 @@ public class Game {
             Asker.println("");
 
 
-
             if (character.getType().equals("Chef")) {
+
                 final TribuChef chef = (TribuChef) character;
-                int choiceId = Asker.askChoice(List.of("Attack with my weapon","Attack with my soldiers"), "Select a way to attack this " + enemy.getName());
+                Asker.askChoice(List.of("Attack with my soldiers"), "Select a way to attack this " + enemy.getName());
                 Asker.println("Your team is attacking " + enemy.getName());
-                Asker.println("Choices" + choiceId);
-                if (choiceId == 1) {
-                    chef.attack(enemy);
-                } else {
-                    chef.attackGroup(enemy);
-                    for(IPersonnage ent : chef.getTribu()){
-                        Asker.println(ent.getShout(0));
-                    }
+
+                chef.attackGroup(enemy);
+                for (IPersonnage ent : chef.getTribu()) {
+                    Asker.println(ent.getShout(0));
                 }
+
                 enemy.attack(character);
 
                 Asker.println("\u001B[34m" + character.getShout(0) + "\u001B[0m" + "\n");  // defense shout
@@ -91,6 +88,7 @@ public class Game {
                 Asker.println("You are attacking " + enemy.getName());
                 Asker.clear();
             }
+
             final float xDistance = Math.abs(enemy.getPositionX() - character.getPositionX());
             final float yDistance = Math.abs(enemy.getPositionY() - character.getPositionY());
 
@@ -100,29 +98,33 @@ public class Game {
 
             } else if (character.getAttack() > 0) {
 
-
                 enemy.attack(character);
+
                 Asker.println("\u001B[34m" + enemy.getShout(0) + "\u001B[0m" + "\n"); // atta shout
                 Asker.println("\u001B[34m" + character.getShout(1) + "\u001B[0m" + "\n"); //  def shout
+
                 character.attack(enemy);
+
                 Asker.println("\u001B[34m" + character.getShout(0) + "\u001B[0m" + "\n"); // atta shout
                 Asker.println("\u001B[34m" + enemy.getShout(1) + "\u001B[0m" + "\n");  // defense shout
                 Asker.println("\u001B[32m" + "enemy loses " + character.getAttack() * (1 - (enemy.getDefense() / 100)) + "HP !" + "\u001B[0m"); // - 6 usure
 
                 printStats(enemy);
+
             } else if (character.getAttack() == 0) {
+
                 Asker.println("\u001B[31m" + "No damage dealt ! You missed your shot !" + "\u001B[0m"); // - 8
                 enemy.attack(character);
                 printStats(enemy);
 
             } else if (character.getMainWeapon().getUsure() >= 50) {
+
                 Asker.println("\u001B[31m" + "No damage dealt ! Your weapon is worn out !" + "\u001B[0m"); // - 10
                 enemy.attack(character);
                 printStats(enemy);
             }
-
-
         }
+
         if (!enemy.isAlive() && character.isAlive()) {
             Asker.println("\u001B[31m" + enemy.getShout(2) + "\u001B[0m" + "\n");
             kill();
@@ -207,10 +209,10 @@ public class Game {
             case 2 -> character = new Knight(playerName);
             case 3 -> character = new Mage(playerName);
             case 4 -> character = new Trapper(playerName);
-            case 5 -> character = new TribuChef(List.of(new Barbarian("")), "Chef", 40, 1000, 30, 0, 0);
-            case 6 -> character = new TribuChef(List.of(new Mage("")), "Chef", 150, 500, 15, 0, 0);
-            case 7 -> character = new TribuChef(List.of(new Trapper("")), "Chef", 125, 600, 15, 0, 0);
-            case 8 -> character = new TribuChef(List.of(new Knight("")), "Chef", 60, 1200, 30, 0, 0);
+            case 5 -> character = new TribuChef(List.of(new Barbarian("Pdro"),new Barbarian("Rodolph")), "Chef", 40, 1000, 30, 0, 0);
+            case 6 -> character = new TribuChef(List.of(new Mage("Salut"),new Mage("Oui")), "Chef", 150, 500, 15, 0, 0);
+            case 7 -> character = new TribuChef(List.of(new Trapper("Mike"),new Trapper("Edward")), "Chef", 125, 600, 15, 0, 0);
+            case 8 -> character = new TribuChef(List.of(new Knight("Xxpredator31xX"), new Knight("Qnaillte")), "Chef", 60, 1200, 30, 0, 0);
         }
     }
 

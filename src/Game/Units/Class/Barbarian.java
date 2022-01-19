@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class Barbarian extends Character {
     public Barbarian(String _name) {
-        super(_name, 500, 75, 25, "Babare", 0, 0,
+        super(_name, 500, 75, 25, "Barbare", 0, 0,
                 Arrays.asList("A l'ATTAQUE !!",
                         "*Cri du barbare qui souffre*",
                         "Amenez moi au Valhalla..")
